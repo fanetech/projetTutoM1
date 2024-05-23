@@ -15,6 +15,8 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Database db = new Database();
+        db.connexionDB();
         response.setContentType("text/html");
 
         // Hello
