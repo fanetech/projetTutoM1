@@ -9,19 +9,20 @@ public class Database {
 
     public void  connexionDB(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connexion = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/menuDepense",
+                    "jdbc:mysql://127.0.0.1:3306/menudepense",
                     "root",
                     "root"
             );
-            Statement statement = connexion.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM  users");
-
-            while (resultSet.next()){
-                System.out.println(resultSet.getString("nom"));
-                System.out.println(resultSet.getString("prenom"));
-            }
+//            System.out.println("resultSet.getString(\"nom\")");
+//            Statement statement = connexion.createStatement();
+//            ResultSet resultSet = statement.executeQuery("SELECT * FROM  users");
+//
+//            while (resultSet.next()){
+//                System.out.println(resultSet.getString("nom"));
+//                System.out.println(resultSet.getString("prenom"));
+//            }
 
         }catch (SQLException | ClassNotFoundException e){
             System.out.println("connection error =>"+e);
