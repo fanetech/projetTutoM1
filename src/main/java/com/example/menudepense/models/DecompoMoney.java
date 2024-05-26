@@ -1,4 +1,4 @@
-package models;
+package com.example.menudepense.models;
 
 public class DecompoMoney {
     private  int id;

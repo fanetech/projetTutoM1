@@ -1,27 +1,37 @@
-package models;
+package com.example.menudepense.models;
+
+import java.util.Date;
 
 public class MvmtCaisse {
-    private Integer moment;
+    private int id;
+    private Integer montant;
     private String commentaire;
     private String libelle;
-    private Integer beneficiaire;
+    private String beneficiaire;
     private  String type;
     private  String receveur;
+    private Date createdAt;
 
     public MvmtCaisse() {
     }
 
-    public MvmtCaisse(Integer moment, String commentaire, String libelle, Integer beneficiaire, String type, String receveur) {
-        this.moment = moment;
+    public MvmtCaisse(int id, Integer moment, String commentaire, String libelle, String beneficiaire, String type, String receveur, Date createdAt) {
+        this.id = id;
+        this.montant = moment;
         this.commentaire = commentaire;
         this.libelle = libelle;
         this.beneficiaire = beneficiaire;
         this.type = type;
         this.receveur = receveur;
+        this.createdAt = createdAt;
     }
 
-    public Integer getMoment() {
-        return moment;
+
+    public int getId() {
+        return id;
+    }
+    public Integer getMontant() {
+        return montant;
     }
 
     public String getCommentaire() {
@@ -32,7 +42,7 @@ public class MvmtCaisse {
         return libelle;
     }
 
-    public Integer getBeneficiaire() {
+    public String getBeneficiaire() {
         return beneficiaire;
     }
 
@@ -44,8 +54,16 @@ public class MvmtCaisse {
         return receveur;
     }
 
-    public void setMoment(Integer moment) {
-        this.moment = moment;
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setMontant(Integer montant) {
+        this.montant = montant;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCommentaire(String commentaire) {
@@ -56,7 +74,7 @@ public class MvmtCaisse {
         this.libelle = libelle;
     }
 
-    public void setBeneficiaire(Integer beneficiaire) {
+    public void setBeneficiaire(String beneficiaire) {
         this.beneficiaire = beneficiaire;
     }
 
@@ -66,5 +84,9 @@ public class MvmtCaisse {
 
     public void setReceveur(String receveur) {
         this.receveur = receveur;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -1,4 +1,4 @@
-package models;
+package com.example.menudepense.models;
 
 public class ArretCaisse {
     private int id;

@@ -12,6 +12,6 @@
 </head>
 <body>
     <h1>Page d'accueil</h1>
-    <a href="Caisse-servlet">Caisse</a>
+    <a href="login">se connecter</a>
 </body>
 </html>

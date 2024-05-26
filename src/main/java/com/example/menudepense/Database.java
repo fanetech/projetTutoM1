@@ -27,15 +27,12 @@ public class Database {
     public ResultSet  get(String query){
         try{
             Connection connexion = connexionDB();
-            System.out.println("resultSet.getString(\"nom\")");
             Statement statement = connexion.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()){
-                System.out.println(resultSet.getString("nom"));
-                System.out.println(resultSet.getString("prenom"));
-            }
-            return resultSet;
+            //            while (resultSet.next()){
+//                System.out.println(resultSet.getString("nom"));
+//                System.out.println(resultSet.getString("prenom"));
+//            }
+            return statement.executeQuery(query);
 
         }catch (SQLException e){
             System.out.println("connection error =>"+e);

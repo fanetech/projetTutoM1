@@ -24,11 +24,11 @@
                     <div class="text-900 text-3xl font-medium text-center mb-3">FORMULAIRE CONNEXION</div>
                     <div>
 
-                        <form action="login" method="get">
+                        <form action="/login" method="post">
                             <label class="block text-900 text-xl font-medium mb-2">Login</label>
                             <input
                                     type="text"
-                                    name="login"
+                                    name="username"
                                     class="w-full md:w-30rem mb-3 form-control"
                                     style="padding: 1rem"
                                     required
@@ -44,7 +44,6 @@
                                     required
                             />
                             <input type="submit" value="S'identifier">
-                            <button class=""style="" ><span>S'identifier</span></button>
                         </form>
 
                     </div>
