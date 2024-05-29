@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
             System.out.println(res);
             if(res.next()) {
                 if(Objects.equals(res.getString("username"), username) && Objects.equals(res.getString("password"), password)){
-                    getServletContext().getRequestDispatcher("/caisse.jsp").forward(request, response);
+                    response.sendRedirect("/Caisse-servlet");
                 }else{
                     System.out.println("no connect");
                     getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
