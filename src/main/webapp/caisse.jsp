@@ -4,60 +4,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Table</title>
+    <meta charset="UTF-8">
+    <title>Journal de caisse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        table, th, td {
-            border: 1px solid black;
+        header {
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .content {
+            margin-top: 140px; /* Adjusted margin-top to give more space */
+            width: 100%;
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .add-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .add-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        .action-button {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-right: 5px;
+        }
+        .edit-button {
+            background-color: #007bff;
+        }
+        .edit-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-1px);
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+            transform: translateY(-1px);
+        }
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .menu {
+            display: flex;
+            gap: 15px;
+            background-color: #28a745; /* Changed to green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .menu a:hover {
+            background-color: #495057;
         }
     </style>
 </head>
 <body>
-<h1>Journal de caisse</h1>
-<a href="/servlet-CreateMvment">creer un mouvement de caisse</a>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>libellé</th>
-        <th>montant</th>
-        <th>commentaire</th>
-        <th>beneficiaire</th>
-        <th>receveur</th>
-        <th>type</th>
-        <th>date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%
-        List<MvmtCaisse> mvmtCaisseList = (List<MvmtCaisse>) request.getAttribute("mvmtCaisseList");
-        if (mvmtCaisseList != null) {
-            for (MvmtCaisse mvmtCaisse : mvmtCaisseList) {
-                %>
-    <tr>
-        <td><%= mvmtCaisse.getId() %></td>
-        <td><%= mvmtCaisse.getLibelle() %></td>
-        <td><%= mvmtCaisse.getMontant() %></td>
-        <td><%= mvmtCaisse.getCommentaire() %></td>
-        <td><%= mvmtCaisse.getBeneficiaire() %></td>
-        <td><%= mvmtCaisse.getReceveur() %></td>
-        <td><%= mvmtCaisse.getType() %></td>
-        <td><%= mvmtCaisse.getCreatedAt() %></td>
-    </tr>
-    <%
+<header>
+    <h1>Journal</h1>
+</header>
+<div class="menu">
+    <a href="caisse.jsp">Journal de caisse</a>
+    <a href="mouve_interface.jsp">Mouvement de compte</a>
+    <a href="utilisateur.jsp">Employé</a>
+    <a href="utilisateur.jsp">Arrêt de caisse</a>
+</div>
+<div class="content">
+    <a href="/servlet-CreateMvment"  class="add-button"><i class="fas fa-plus"></i> Ajouter</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>libellé</th>
+            <th>montant</th>
+            <th>commentaire</th>
+            <th>type</th>
+            <th>date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            List<MvmtCaisse> mvmtCaisseList = (List<MvmtCaisse>) request.getAttribute("mvmtCaisseList");
+            if (mvmtCaisseList != null) {
+                for (MvmtCaisse mvmtCaisse : mvmtCaisseList) {
+        %>
+        <tr>
+            <td><%= mvmtCaisse.getId() %></td>
+            <td><%= mvmtCaisse.getLibelle() %></td>
+            <td><%= mvmtCaisse.getMontant() %></td>
+            <td><%= mvmtCaisse.getCommentaire() %></td>
+            <td><%= mvmtCaisse.getType() %></td>
+            <td><%= mvmtCaisse.getCreatedAt() %></td>
+            <td class="action-buttons">
+                <a href="/EditMvmentServlet-servlet/<%= mvmtCaisse.getId() %>" class="action-button edit-button"><i class="fas fa-edit"></i> Modifier</a>
+                <a href="deleteCaisse.jsp?id=1" class="action-button delete-button"><i class="fas fa-trash"></i> Supprimer</a>
+            </td>
+        </tr>
+
+        <%
+                }
+            } else {
+                System.out.println("<tr><td colspan='3'>No users found</td></tr>");
             }
-        } else {
-            System.out.println("<tr><td colspan='3'>No users found</td></tr>");
-        }
-    %>
-    </tbody>
-</table>
+        %>
+        <!-- Ajoutez d'autres lignes ici -->
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

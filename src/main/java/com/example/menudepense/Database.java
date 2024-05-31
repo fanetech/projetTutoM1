@@ -54,4 +54,16 @@ public class Database {
         return 0;
     }
 
+    public ResultSet update(String query){
+        try{
+            Connection connexion = connexionDB();
+            Statement statement = connexion.createStatement();
+            return statement.executeQuery(query);
+        }catch (SQLException e){
+            System.out.println("connection error =>"+e);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
