@@ -36,7 +36,6 @@ public class CreateMvment extends HttpServlet {
         String caisse = request.getParameter("caisse");
         LocalDate currentDate = LocalDate.now();
         Database db = new Database();
-        System.out.println("INSERT INTO mvment_caisse (id_caisse, id_caisse_mvmt, id_user, libelle, commentaire,montant, type, createdAt) VALUES (1, '"+caisse+"', 1, '"+libelle+"', '"+commentaire+"','"+montant+"', '"+type+"', '"+currentDate+"' )");
         int res =  db.insert("INSERT INTO mvment_caisse (id_caisse, id_caisse_mvmt, id_user, libelle, commentaire,montant, type, createdAt) VALUES (1, '"+caisse+"', 1, '"+libelle+"', '"+commentaire+"','"+montant+"', '"+type+"', '"+currentDate+"' )");
         if(res!=0){
             response.sendRedirect("/Caisse-servlet");

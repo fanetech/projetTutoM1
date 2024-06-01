@@ -108,7 +108,7 @@
             <input type="number" id="montant" name="montant" step="0.01" required>
         </div>
         <div class="form-group">
-            <label for="sortie">Sortie</label>
+            <label for="sortie">Type</label>
             <select id="sortie" name="type" required>
                 <option value="entre">Entre</option>
                 <option value="sortie" selected>Sortie</option>
