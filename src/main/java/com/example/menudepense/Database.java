@@ -66,4 +66,17 @@ public class Database {
         return null;
     }
 
+    public int delete(String query){
+        try{
+            Connection connexion = connexionDB();
+            Statement statement = connexion.createStatement();
+            return statement.executeUpdate(query);
+
+        }catch (SQLException e){
+            System.out.println("connection error =>"+e);
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

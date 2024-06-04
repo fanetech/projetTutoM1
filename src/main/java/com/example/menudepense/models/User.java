@@ -1,5 +1,7 @@
 package com.example.menudepense.models;
 
+import java.util.Date;
+
 public class User {
     private int id;
     private String nom;
@@ -7,17 +9,23 @@ public class User {
     private String email;
     private String password;
     private String tel;
+    private String username;
+    private String role;
+    private Date createdAt;
 
-    public User(int id) {
+    public User() {
     }
 
-    public User(int id, String nom, String prenom, String email, String password, String tel) {
+    public User(int id, String nom, String prenom, String email, String password, String tel, String username, String role, Date createdAt) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
         this.tel = tel;
+        this.role = role;
+        this.createdAt = createdAt;
+        this.username = username;
     }
 
     public int getId() {
@@ -44,6 +52,18 @@ public class User {
         return tel;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -66,5 +86,17 @@ public class User {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setRole(String tel) {
+        this.role = role;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

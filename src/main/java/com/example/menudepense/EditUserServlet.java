@@ -1,6 +1,7 @@
 package com.example.menudepense;
 
 import com.example.menudepense.models.MvmtCaisse;
+import com.example.menudepense.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +15,15 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 
-@WebServlet(name = "EditMvmentServletServlet", value = "/EditMvmentServlet-servlet/*")
-public class EditMvmentServlet extends HttpServlet {
+@WebServlet(name = "EditUserServletServlet", value = "/edit-user-servlet/*")
+public class EditUserServlet extends HttpServlet {
     private String message;
 
     public void init() {
         message = "Hello World!";
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String pathInfo = request.getPathInfo(); // /{id}
         if (pathInfo == null || pathInfo.equals("/")) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing user ID");
@@ -39,23 +40,26 @@ public class EditMvmentServlet extends HttpServlet {
         try {
             id = Integer.parseInt(pathParts[1]);
             Database db = new Database();
-            ResultSet res =  db.update("SELECT * FROM mvment_caisse WHERE id = '"+id+"'");
+            ResultSet res =  db.update("SELECT * FROM user WHERE id = '"+id+"'");
             if(res!=null){
                 if(res.next()){
-                    MvmtCaisse mvm = new MvmtCaisse();
+                    User mvm = new User();
                     mvm.setId(res.getInt("id"));
-                    mvm.setMontant(res.getInt("montant"));
-                    mvm.setCommentaire(res.getString("commentaire"));
-                    mvm.setLibelle(res.getString("libelle"));
+                    mvm.setNom(res.getString("nom"));
+                    mvm.setPrenom(res.getString("prenom"));
+                    mvm.setTel(res.getString("tel"));
+                    mvm.setPassword(res.getString("password"));
+                    mvm.setUsername(res.getString("username"));
+                    mvm.setEmail(res.getString("email"));
                     mvm.setCreatedAt(res.getDate("createdAt"));
-                    request.setAttribute("mvm", mvm);
-                    getServletContext().getRequestDispatcher("/editMvment.jsp").forward(request, response);
+                    request.setAttribute("user", mvm);
+                    getServletContext().getRequestDispatcher("/editUser.jsp").forward(request, response);
                 }
 
             }else{
-                getServletContext().getRequestDispatcher("/editMvment.jsp/"+id).forward(request, response);
+                getServletContext().getRequestDispatcher("/editUser.jsp/"+id).forward(request, response);
             }
-        } catch (NumberFormatException | SQLException e) {
+        } catch (NumberFormatException | SQLException | ServletException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid user ID format");
             return;
         }
@@ -76,19 +80,21 @@ public class EditMvmentServlet extends HttpServlet {
 
         int id;
         id = Integer.parseInt(pathParts[1]);
-        String libelle = request.getParameter("libelle");
-        String commentaire = request.getParameter("commentaire");
-        String montant = request.getParameter("montant");
-        String type = request.getParameter("type");
-        String caisse = request.getParameter("caisse");
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String tel = request.getParameter("tel");
+        String password = request.getParameter("password");
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         Database db = new Database();
-        int res =  db.insert("UPDATE mvment_caisse SET libelle = '"+libelle+"', commentaire = '"+commentaire+"', montant = '"+montant+"', type = '"+type+"', id_caisse_mvmt = '"+caisse+"'  WHERE id ='"+id+"' ");
+        int res =  db.insert("UPDATE user SET nom = '"+nom+"', prenom = '"+prenom+"', tel = '"+tel+"', password = '"+password+"', username = '"+username+"', email = '"+email+"'   WHERE id ='"+id+"' ");
         if(res!=0){
-            response.sendRedirect("/Caisse-servlet");
+            response.sendRedirect("/employe-servlet");
         }else{
-            response.sendRedirect("/EditMvmentServlet-servlet/"+id);
+            response.sendRedirect("/edit-user-servlet/"+id);
         }
     }
+
     public void destroy() {
     }
 }
