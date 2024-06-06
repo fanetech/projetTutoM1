@@ -21,7 +21,6 @@ public class EditMvmentServlet extends HttpServlet {
     public void init() {
         message = "Hello World!";
     }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String pathInfo = request.getPathInfo(); // /{id}
         if (pathInfo == null || pathInfo.equals("/")) {
@@ -58,7 +57,8 @@ public class EditMvmentServlet extends HttpServlet {
         } catch (NumberFormatException | SQLException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid user ID format");
             return;
-        }
+
+            }
     }
 
     public void  doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

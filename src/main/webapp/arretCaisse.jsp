@@ -174,7 +174,7 @@
             <td><%= mvmtCaisse.getCommentaire() %></td>
             <td><%= mvmtCaisse.getCreatedAt() %></td>
             <td class="action-buttons">
-                <a href="/EditMvmentServlet-servlet/<%= mvmtCaisse.getId() %>" class="action-button edit-button"><i class="fas fa-edit"></i> Modifier</a>
+                <a href="/EditArretCaisse-servlet/<%= mvmtCaisse.getId() %>" class="action-button edit-button"><i class="fas fa-edit"></i> Modifier</a>
                 <a href="/delete-servlet/arret-caisse/<%= mvmtCaisse.getId() %>" class="action-button delete-button"><i class="fas fa-trash"></i> Supprimer</a>
             </td>
         </tr>
