@@ -54,6 +54,25 @@ public class Database {
         return 0;
     }
 
+    public int insertGetid(String query){
+        try{
+            Connection connexion = connexionDB();
+            Statement statement = connexion.createStatement();
+            int affectedRows = statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+            // Retrieve the generated keys
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int id = generatedKeys.getInt(1); // Assumes the key is a long. Adjust as needed.
+                return id;
+            }
+
+        }catch (SQLException e){
+            System.out.println("connection error =>"+e);
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public ResultSet update(String query){
         try{
             Connection connexion = connexionDB();

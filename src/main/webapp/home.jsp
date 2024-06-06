@@ -76,7 +76,7 @@
     <a href="/Caisse-servlet" class="button"><i class="fas fa-cash-register"></i>Journal de caisse</a>
     <a href="/servlet-CreateMvment" class="button"><i class="fas fa-exchange-alt"></i>Mouvement de Compte</a>
     <a href="/employe-servlet" class="button"><i class="fas fa-user"></i>Employé</a>
-    <a href="arretCaisse.jsp" class="button"><i class="fas fa-times-circle"></i>Arrêt Caisse</a>
+    <a href="/arretCaisse-servlet" class="button"><i class="fas fa-times-circle"></i>Arrêt Caisse</a>
 </div>
 <footer>
     &copy; 2024 Projet java MSI1. Tous droits réservés.

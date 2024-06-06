@@ -53,6 +53,15 @@ public class DeleteServlet extends HttpServlet {
                     response.sendRedirect("/employe-servlet");
                 }
                 break;
+            case "arret-caisse":
+                int userAc =  db.delete("DELETE FROM arret_caisse WHERE id = '"+pathParts[2]+"'");
+                System.out.println(userAc);
+                if(userAc!=0){
+                    response.sendRedirect("/arretCaisse-servlet");
+                }else{
+                    response.sendRedirect("/arretCaisse-servlet");
+                }
+                break;
             default:
                 response.sendRedirect("/");
                 break;
