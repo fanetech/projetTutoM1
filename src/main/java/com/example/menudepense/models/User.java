@@ -12,11 +12,12 @@ public class User {
     private String username;
     private String role;
     private Date createdAt;
+    private  int caisseId;
 
     public User() {
     }
 
-    public User(int id, String nom, String prenom, String email, String password, String tel, String username, String role, Date createdAt) {
+    public User(int id, String nom, String prenom, String email, String password, String tel, String username, String role, Date createdAt, int caisseId) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -26,6 +27,7 @@ public class User {
         this.role = role;
         this.createdAt = createdAt;
         this.username = username;
+        this.caisseId = caisseId;
     }
 
     public int getId() {
@@ -58,6 +60,10 @@ public class User {
 
     public Date getCreatedAt() {
         return createdAt;
+    }
+
+    public int getCaisseId() {
+        return caisseId;
     }
 
     public String getUsername() {
@@ -98,5 +104,9 @@ public class User {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public void setCaisseId(int caisseId) {
+        this.caisseId = caisseId;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.menudepense;
 
+import com.example.menudepense.models.Caisse;
 import com.example.menudepense.models.MvmtCaisse;
 import com.example.menudepense.models.User;
 
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.io.*;
 import java.sql.ResultSet;
@@ -26,6 +28,15 @@ public class CreateUserServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
+        User user = (User) session.getAttribute("user");
+        request.setAttribute("user", user);
+        List<Caisse> caisses = (List<Caisse>) session.getAttribute("caisses");
+        request.setAttribute("caisses", caisses);
         getServletContext().getRequestDispatcher("/createUser.jsp").forward(request, response);
     }
 
@@ -38,9 +49,10 @@ public class CreateUserServlet extends HttpServlet {
         String password = res.getParameter("password");
         String username = res.getParameter("username");
         String email = res.getParameter("email");
+        Integer caisseId = Integer.parseInt(res.getParameter("caisseId"));
         LocalDate currentDate = LocalDate.now();
         Database db = new Database();
-        int reqCreated =  db.insert("INSERT INTO user ( nom, prenom, tel, password,username, email, createdAt) VALUES ('"+nom+"', '"+prenom+"', '"+tel+"','"+password+"', '"+username+"', '"+email+"', '"+currentDate+"' )");
+        int reqCreated =  db.insert("INSERT INTO user ( nom, prenom, tel, password,username, email, createdAt, caisseId) VALUES ('"+nom+"', '"+prenom+"', '"+tel+"','"+password+"', '"+username+"', '"+email+"', '"+currentDate+"', '"+caisseId+"' )");
         if(reqCreated!=0){
             req.sendRedirect("/employe-servlet");
         }else{

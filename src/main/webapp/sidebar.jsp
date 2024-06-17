@@ -3,14 +3,14 @@
 
 <!--sidenav -->
 <div class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 sidebar-menu transition-transform">
-  <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
+  <a href="/" class="flex items-center pb-4 border-b border-b-gray-800">
 
     <h2 class="font-bold text-2xl">CAISSE <span class="bg-[#f84525] text-white px-2 rounded-md">MENU</span></h2>
   </a>
   <ul class="mt-4">
     <span class="text-gray-400 font-bold">ADMIN</span>
     <li class="mb-1 group">
-      <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+      <a href="/" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class="ri-home-2-line mr-3 text-lg"></i>
         <span class="text-sm">Dashboard</span>
       </a>
@@ -29,9 +29,9 @@
     </li>
     <span class="text-gray-400 font-bold">ACTION</span>
     <li class="mb-1 group">
-      <a href="/servlet-CreateMvment" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+      <a href="/caisseMain-servlet" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class='bx bxl-blogger mr-3 text-lg' ></i>
-        <span class="text-sm">Mouvement de Compte</span>
+        <span class="text-sm">Caisse</span>
       </a>
     </li>
     <li class="mb-1 group">
@@ -49,10 +49,9 @@
       </a>
     </li>
     <li class="mb-1 group">
-      <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-        <i class='bx bx-envelope mr-3 text-lg' ></i>
-        <span class="text-sm">Messages</span>
-        <span class=" md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-600 bg-green-200 rounded-full">2 New</span>
+      <a href="/Logout-servlet" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+        <i class='bx bx-log-out mr-3 text-lg'></i>
+        <span class="text-sm">Deconnexion</span>
       </a>
     </li>
   </ul>

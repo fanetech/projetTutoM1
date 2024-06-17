@@ -3,191 +3,80 @@
 <%@ page import="com.example.menudepense.models.ArretCaisse" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Arrêt de caisse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        header {
-            width: 100%;
-            background-color: #343a40;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .content {
-            margin-top: 140px; /* Adjusted margin-top to give more space */
-            width: 100%;
-            max-width: 1200px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .add-button {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .add-button:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #e9ecef;
-        }
-        .action-button {
-            padding: 8px 12px;
-            font-size: 14px;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-right: 5px;
-        }
-        .edit-button {
-            background-color: #007bff;
-        }
-        .edit-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-1px);
-        }
-        .delete-button {
-            background-color: #dc3545;
-        }
-        .delete-button:hover {
-            background-color: #c82333;
-            transform: translateY(-1px);
-        }
-        .action-buttons {
-            display: flex;
-            gap: 5px;
-        }
-        .menu {
-            display: flex;
-            gap: 15px;
-            background-color: #28a745; /* Changed to green */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        .menu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            transition: background-color 0.3s;
-        }
-        .menu a:hover {
-            background-color: #495057;
-        }
-    </style>
-</head>
+<%@ include file="head.jsp"%>
 <body>
-<header>
-    <h1>Journal</h1>
-</header>
-<div class="menu">
-    <a href="caisse.jsp">Journal de caisse</a>
-    <a href="mouve_interface.jsp">Mouvement de compte</a>
-    <a href="utilisateur.jsp">Employé</a>
-    <a href="utilisateur.jsp">Arrêt de caisse</a>
-</div>
-<div class="content">
-    <a href="/createArretCaisse-servlet"  class="add-button"><i class="fas fa-plus"></i> Ajouter</a>
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>montant</th>
-            <th>commentaire</th>
-            <th>Date</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%
-            List<ArretCaisse> mvmtCaisseList = (List<ArretCaisse>) request.getAttribute("arretCaisseList");
-            if (mvmtCaisseList != null) {
-                for (ArretCaisse mvmtCaisse : mvmtCaisseList) {
-        %>
-        <tr>
-            <td><%= mvmtCaisse.getId() %></td>
-            <td><%= mvmtCaisse.getMoment() %></td>
-            <td><%= mvmtCaisse.getCommentaire() %></td>
-            <td><%= mvmtCaisse.getCreatedAt() %></td>
-            <td class="action-buttons">
-                <a href="/EditArretCaisse-servlet/<%= mvmtCaisse.getId() %>" class="action-button edit-button"><i class="fas fa-edit"></i> Modifier</a>
-                <a href="/delete-servlet/arret-caisse/<%= mvmtCaisse.getId() %>" class="action-button delete-button"><i class="fas fa-trash"></i> Supprimer</a>
-            </td>
-        </tr>
+<%@ include file="sidebar.jsp"%>
+<main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
+    <%@ include file="navbar.jsp"%>
+    <div class="flex flex-row justify-center w-100">
 
-        <%
-                }
-            } else {
-                System.out.println("<tr><td colspan='3'>No users found</td></tr>");
-            }
-        %>
-        <!-- Ajoutez d'autres lignes ici -->
-        </tbody>
-    </table>
-</div>
+        <div class="content my-8 mx-3">
+            <div
+                    class="flex h-fit w-full items-center justify-between rounded-t-2xl bg-white px-4 pb-[20px] pt-4 shadow-2xl shadow-gray-100 dark:!bg-navy-700 dark:shadow-none"
+            >
+                <h4 class="text-lg font-bold text-navy-700 dark:text-white">
+                    Arrêt caisse
+                </h4>
+                <a href="/createArretCaisse-servlet"  >
+                    <button
+                            class="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20"
+                    >
+                        Ajouter
+                    </button>
+                </a>
+
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>montant</th>
+                    <th>commentaire</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    List<ArretCaisse> mvmtCaisseList = (List<ArretCaisse>) request.getAttribute("arretCaisseList");
+                    if (mvmtCaisseList != null) {
+                        for (ArretCaisse mvmtCaisse : mvmtCaisseList) {
+                %>
+                <tr>
+                    <td><%= mvmtCaisse.getId() %></td>
+                    <td><%= mvmtCaisse.getMoment() %></td>
+                    <td><%= mvmtCaisse.getCommentaire() %></td>
+                    <td><%= mvmtCaisse.getCreatedAt() %></td>
+                    <td class="py-3 text-sm flex flex-column justify-content-center" role="cell">
+                        <a href="/EditArretCaisse-servlet/<%= mvmtCaisse.getId() %>" class="mr-1" >
+                            <button class="flex p-1.5 bg-yellow-500 rounded-xl hover:rounded-3xl hover:bg-yellow-600 transition-all duration-300 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </button>
+                        </a>
+                        <a href="/delete-servlet/arret-caisse/<%= mvmtCaisse.getId() %>"  class="me-1">
+                            <button class="flex p-1.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-yellow-600 transition-all duration-300 text-white">
+                                <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                    <path d="M9 3V4H4V6H5V20C5 21.1 5.9 22 7 22H17C18.1 22 19 21.1 19 20V6H20V4H15V3H9ZM7 6H17V20H7V6ZM9 8V18H11V8H9ZM13 8V18H15V8H13Z" />
+                                </svg>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+
+                <%
+                        }
+                    } else {
+                        System.out.println("<tr><td colspan='3'>No users found</td></tr>");
+                    }
+                %>
+                <!-- Ajoutez d'autres lignes ici -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<%@ include file="script.jsp"%>
 </body>
 </html>

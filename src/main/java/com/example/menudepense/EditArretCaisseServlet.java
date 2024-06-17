@@ -111,7 +111,7 @@ public class EditArretCaisseServlet extends HttpServlet {
         String montant = request.getParameter("montant");
         String commentaire = request.getParameter("commentaire");
         Database db = new Database();
-        int res =  db.insert("UPDATE arret_caisse SET montant = '"+montant+"', commentaire = '"+commentaire+"'");
+        int res =  db.insert("UPDATE arret_caisse SET montant = '"+montant+"', commentaire = '"+commentaire+"' WHERE id='"+id+"' ");
         if(res!=0){
             response.sendRedirect("/arretCaisse-servlet");
         }else{

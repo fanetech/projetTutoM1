@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "CaisseServlet", value = "/Caisse-servlet")
-public class Caisse extends HttpServlet {
+public class CaisseAction extends HttpServlet {
     private String message;
 
     public void init() {

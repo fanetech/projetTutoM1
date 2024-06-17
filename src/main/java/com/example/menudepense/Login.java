@@ -1,10 +1,14 @@
 package com.example.menudepense;
+import com.example.menudepense.models.Caisse;
 import com.example.menudepense.models.User;
 
 import java.io.*;
 import java.rmi.ServerException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.servlet.ServletException;
@@ -28,12 +32,15 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Database db = new Database();
         ResultSet res =  db.get("SELECT * FROM user WHERE username = '"+username+"' AND password ='"+password+"' ");
-        try {
-            System.out.println(res);
+        List<Caisse> caisseList = new ArrayList<>();
+
+
             if(res.next()) {
                 if(Objects.equals(res.getString("username"), username) && Objects.equals(res.getString("password"), password)){
                     User user = new User();
@@ -42,11 +49,35 @@ public class Login extends HttpServlet {
                     user.setPrenom(res.getString("prenom"));
                     user.setTel(res.getString("tel"));
                     user.setRole(res.getString("role"));
+                    user.setCaisseId(res.getInt("caisseId"));
                     user.setCreatedAt(res.getDate("createdAt"));
                     user.setId(res.getInt("id"));
-                    HttpSession session = request.getSession();
+
                     session.setAttribute("user", user);
+                    ResultSet ress =  db.get("SELECT * FROM caisse");
+                    while (ress.next()) {
+                        int id = ress.getInt("id");
+                        Integer montant = ress.getInt("montant");
+                        String libelle = ress.getString("libelle");
+                        Date createdAt = ress.getDate("createdAt");
+                        caisseList.add(new Caisse( id, montant, libelle, createdAt));
+                    }
+                    System.out.println(caisseList);
+                    session.setAttribute("caisses", caisseList);
+                    System.out.println(res);
+                    Caisse foundCaisse = caisseList.stream()
+                            .filter(caisse -> caisse.getId() == user.getCaisseId()) // Replace with your condition
+                            .findFirst()
+                            .orElse(null);
+
+                    System.out.println(foundCaisse);
+
+                    if (foundCaisse != null) {
+                        System.out.println("Found: " + foundCaisse);
+                        session.setAttribute("caisse", foundCaisse);
+                    }
                     response.sendRedirect("/");
+
                 }else{
                     System.out.println("no connect");
                     getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
