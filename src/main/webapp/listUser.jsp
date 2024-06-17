@@ -2,10 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Liste des utilisateurs</title>
-</head>
+<%@ include file="head.jsp"%>
 <body>
 	<div class="surface-ground mb-3 flex align-items-center justify-content-center overflow-hidden">
  		<img

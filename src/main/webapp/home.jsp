@@ -27,6 +27,13 @@
             position: fixed;
             top: 0;
             z-index: 1000;
+
+        }
+        header .nav {
+            margin: 0 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
         header h1 {
             margin: 0;
@@ -70,7 +77,10 @@
 </head>
 <body>
 <header>
-    <h1>Gestion de caisse</h1>
+    <div class="nav">
+        <h1>Gestion de caisse</h1>
+        <a href="/Logout-servlet">logout</a>
+    </div>
 </header>
 <div class="container">
     <a href="/Caisse-servlet" class="button"><i class="fas fa-cash-register"></i>Journal de caisse</a>

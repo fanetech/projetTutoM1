@@ -1,56 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Menu-caisse</title>
-<style>
-      <%@ include file="./css/style.css"%>
-  </style>
+ <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login & Signup Form</title>
+    <style>
+    	<%@ include file="loginCss.css"%>
+     </style>
 </head>
 <body>
-	<div class="mb-3">
-    <div class="flex flex-column align-items-center justify-content-center">
-        <img
-                src="./assets/images/caisse.png"
-                alt="Caisse App"
-                class="mb-3 w-10rem flex-shrink-0"
-        />
-        
-        <form method="post" action="">
-            <div>
-                <div class="w-full surface-card" style="border-radius: 53px">
-                    <div class="text-900 text-3xl font-medium text-center mb-3">FORMULAIRE CONNEXION</div>
-                    <div>
-
-                        <form action="/login" method="post">
-                            <label class="block text-900 text-xl font-medium mb-2">Login</label>
-                            <input
-                                    type="text"
-                                    name="username"
-                                    class="w-full md:w-30rem mb-3 form-control"
-                                    style="padding: 1rem"
-                                    required
-                            />
-                            <label class="block text-900 font-medium text-xl mb-2"
-                            >Mot de passe</label
-                            >
-                            <input
-                                    type="password"
-                                    name="password"
-                                    class="w-full md:w-30rem mb-3 form-control"
-                                    style="padding: 1rem"
-                                    required
-                            />
-                            <input type="submit" value="S'identifier">
-                        </form>
-
-                    </div>
-                </div>
-            </div>
+<section class="wrapper">
+    	<pre>${dbmsOutput}</pre>
+    	
+    	<div class="form login">
+        <header>Login</header>
+        <form action="/login" method="post">
+          <input type="text" name="username" placeholder="Username" required />
+          <input type="password" name="password" placeholder="Mot de passe" required />
+          <a href="#">Mot de passe oublier?</a>
+          <input type="submit" value="Se connecter" />
         </form>
-    </div>
-</div>
+      </div>
+      <div class="form signup">
+        <header>Signup</header>
+        <form action="../addUser" method="post">
+          <input type="text" name="nom" placeholder="Nom" required />
+          <input type="email" name="email" placeholder="Adresse Email" required />
+          <input type="password" name="password" placeholder="Mot de passe" required />
+          <div class="checkbox">
+            <input type="checkbox" id="signupCheck" />
+            <label for="signupCheck">I accept all terms & conditions</label>
+          </div>
+          <input type="submit" value="S'enregistrer" />
+        </form>
+      </div>
+      <p>${errorMessage}</p>
+      
+      <script>
+        const wrapper = document.querySelector(".wrapper"),
+          signupHeader = document.querySelector(".signup header"),
+          loginHeader = document.querySelector(".login header");
+        
+        loginHeader.addEventListener("click", () => {
+          wrapper.classList.add("active");
+        });
+        signupHeader.addEventListener("click", () => {
+          wrapper.classList.remove("active");
+        });
+      </script>
+    </section>
 </body>
 </html>
