@@ -64,12 +64,15 @@ public class CreateMvment extends HttpServlet {
             int caisseAmountUpdate;
             System.out.println("type" + type);
             System.out.println("montant" + montant);
+            System.out.println("caisse.getMoment()"+caisse.getMoment());
+            System.out.println("caisseMvmt.getMoment()"+caisseMvmt.getMoment());
             if(type.equals("sortie")){
                 System.out.println("sortie");
                 caisseMvmtAmountUpdate = caisseMvmt.getMoment() + montant;
                 caisseAmountUpdate = caisse.getMoment() - montant;
             }else{
                 System.out.println("ENTRE");
+                System.out.println("caisse.getMoment()"+caisse.getMoment());
                 caisseAmountUpdate = caisse.getMoment() + montant;
                 caisseMvmtAmountUpdate = caisseMvmt.getMoment() - montant;
             }
@@ -77,6 +80,8 @@ public class CreateMvment extends HttpServlet {
             System.out.println("caisseAmountUpdate"+caisseAmountUpdate);
             int updateCaisse =  db.insert("UPDATE caisse SET montant = '"+caisseAmountUpdate+"' WHERE id ='"+caisse.getId()+"'");
             int updateCaisseMvmt =  db.insert("UPDATE caisse SET montant = '"+caisseMvmtAmountUpdate+"' WHERE id ='"+caisseMvmt.getId()+"'");
+            caisse.setMoment(caisseAmountUpdate);
+            session.setAttribute("caisse", caisse);
             if(res!=0){
                 response.sendRedirect("/Caisse-servlet");
             }else{

@@ -16,7 +16,7 @@
     	<pre>${dbmsOutput}</pre>
     	
     	<div class="form login">
-        <header>Login</header>
+        <header>Se connecter</header>
         <form action="/login" method="post">
           <input type="text" name="username" placeholder="Username" required />
           <input type="password" name="password" placeholder="Mot de passe" required />
@@ -25,14 +25,14 @@
         </form>
       </div>
       <div class="form signup">
-        <header>Signup</header>
+        <header>S'inscrire</header>
         <form action="../addUser" method="post">
           <input type="text" name="nom" placeholder="Nom" required />
           <input type="email" name="email" placeholder="Adresse Email" required />
           <input type="password" name="password" placeholder="Mot de passe" required />
           <div class="checkbox">
             <input type="checkbox" id="signupCheck" />
-            <label for="signupCheck">I accept all terms & conditions</label>
+            <label for="signupCheck">j'accecpte tout les termes & conditions</label>
           </div>
           <input type="submit" value="S'enregistrer" />
         </form>
