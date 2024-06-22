@@ -16,13 +16,23 @@
                 <h4 class="text-lg font-bold text-navy-700 dark:text-white">
                    Mouvement de caisse
                 </h4>
-                <a href="/servlet-CreateMvment">
-                    <button
-                            class="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20"
-                    >
-                        Ajouter
-                    </button>
-                </a>
+                <div>
+                    <a href="/export-servlet/caisse">
+                        <button
+                                class="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20"
+                        >
+                            Export
+                        </button>
+                    </a>
+                    <a href="/servlet-CreateMvment">
+                        <button
+                                class="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20"
+                        >
+                            Ajouter
+                        </button>
+                    </a>
+                </div>
+
             </div>
             <table>
                 <thead>
