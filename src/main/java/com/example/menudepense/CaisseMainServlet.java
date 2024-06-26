@@ -1,8 +1,8 @@
 package com.example.menudepense;
 
 
+import com.example.menudepense.database.Database;
 import com.example.menudepense.models.Caisse;
-import com.example.menudepense.models.MvmtCaisse;
 import com.example.menudepense.models.User;
 
 import java.io.*;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

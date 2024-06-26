@@ -1,14 +1,13 @@
 package com.example.menudepense;
 
 
+import com.example.menudepense.database.Database;
 import com.example.menudepense.models.Caisse;
 import com.example.menudepense.models.User;
 
 import java.io.*;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

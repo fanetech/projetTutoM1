@@ -1,9 +1,9 @@
 package com.example.menudepense;
+import com.example.menudepense.database.Database;
 import com.example.menudepense.models.Caisse;
 import com.example.menudepense.models.User;
 
 import java.io.*;
-import java.rmi.ServerException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -54,6 +54,8 @@ public class Login extends HttpServlet {
                     user.setId(res.getInt("id"));
 
                     session.setAttribute("user", user);
+                    System.out.println("role: " + user.getRole());
+                    System.out.println("res.getString(\"role\") " + res.getString("role"));
                     ResultSet ress =  db.get("SELECT * FROM caisse");
                     while (ress.next()) {
                         int id = ress.getInt("id");
@@ -62,9 +64,7 @@ public class Login extends HttpServlet {
                         Date createdAt = ress.getDate("createdAt");
                         caisseList.add(new Caisse( id, montant, libelle, createdAt));
                     }
-                    System.out.println(caisseList);
                     session.setAttribute("caisses", caisseList);
-                    System.out.println(res);
                     Caisse foundCaisse = caisseList.stream()
                             .filter(caisse -> caisse.getId() == user.getCaisseId()) // Replace with your condition
                             .findFirst()
@@ -73,7 +73,6 @@ public class Login extends HttpServlet {
                     System.out.println(foundCaisse);
 
                     if (foundCaisse != null) {
-                        System.out.println("Found: " + foundCaisse);
                         session.setAttribute("caisse", foundCaisse);
                     }
                     response.sendRedirect("/");

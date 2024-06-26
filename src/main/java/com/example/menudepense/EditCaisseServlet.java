@@ -1,23 +1,17 @@
 package com.example.menudepense;
 
+import com.example.menudepense.database.Database;
 import com.example.menudepense.models.Caisse;
-import com.example.menudepense.models.MvmtCaisse;
-import com.example.menudepense.models.User;
 
 import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "EditCaisseServletServlet", value = "/editCaisse-servlet/*")
 public class EditCaisseServlet extends HttpServlet {

@@ -1,5 +1,6 @@
 package com.example.menudepense;
 
+import com.example.menudepense.database.Database;
 import com.example.menudepense.models.MvmtCaisse;
 import com.example.menudepense.models.User;
 

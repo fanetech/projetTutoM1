@@ -1,5 +1,12 @@
 <html lang="en">
-
+<%@ page import="com.example.menudepense.models.Caisse" %>
+<%@ page import="com.example.menudepense.models.User" %>
+<%@ page import="java.util.Objects" %>
+<%
+  Caisse caissess = (Caisse) session.getAttribute("caisse");
+  User userss = (User) session.getAttribute("user");
+  System.out.println("userss.getRole()"+userss.getRole());
+%>
 
 <!--sidenav -->
 <div class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 sidebar-menu transition-transform">
@@ -8,19 +15,26 @@
     <h2 class="font-bold text-2xl">CAISSE <span class="bg-[#f84525] text-white px-2 rounded-md">MENU</span></h2>
   </a>
   <ul class="mt-4">
-    <span class="text-gray-400 font-bold">ADMIN</span>
+    <span class="text-gray-400 font-bold">ADMINISTATION</span>
     <li class="mb-1 group">
       <a href="/" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class="ri-home-2-line mr-3 text-lg"></i>
         <span class="text-sm">Dashboard</span>
       </a>
     </li>
+    <%
+        if(Objects.equals(userss.getRole(), "ADMIN")){
+    %>
     <li class="mb-1 group">
       <a href="/employe-servlet" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class='bx bx-user mr-3 text-lg'></i>
         <span class="text-sm">Employe</span>
       </a>
     </li>
+    <%
+        }
+    %>
+
     <li class="mb-1 group">
       <a href="/Caisse-servlet" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class='bx bx-list-ul mr-3 text-lg'></i>
@@ -28,19 +42,25 @@
       </a>
     </li>
     <span class="text-gray-400 font-bold">ACTION</span>
+    <%
+      if(Objects.equals(userss.getRole(), "ADMIN")){
+    %>
     <li class="mb-1 group">
       <a href="/caisseMain-servlet" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class='bx bxl-blogger mr-3 text-lg' ></i>
-        <span class="text-sm">Caisse</span>
+        <span class="text-sm">Alimentation caisse</span>
       </a>
     </li>
+    <%
+      }
+    %>
     <li class="mb-1 group">
       <a href="/arretCaisse-servlet" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class='bx bx-archive mr-3 text-lg'></i>
         <span class="text-sm">Arret Caisse</span>
       </a>
     </li>
-    <span class="text-gray-400 font-bold">PERSONAL</span>
+    <span class="text-gray-400 font-bold">AUTRES</span>
     <li class="mb-1 group">
       <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
         <i class='bx bx-bell mr-3 text-lg' ></i>

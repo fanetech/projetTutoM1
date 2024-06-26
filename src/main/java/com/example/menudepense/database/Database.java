@@ -1,4 +1,4 @@
-package com.example.menudepense;
+package com.example.menudepense.database;
 
 import java.sql.*;
 

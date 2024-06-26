@@ -1,18 +1,13 @@
 package com.example.menudepense;
 
-import com.example.menudepense.models.MvmtCaisse;
+import com.example.menudepense.database.Database;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 
 @WebServlet(name = "DeleteServletServlet", value = "/delete-servlet/*")
 public class DeleteServlet extends HttpServlet {
