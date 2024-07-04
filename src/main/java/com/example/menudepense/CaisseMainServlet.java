@@ -1,11 +1,7 @@
 package com.example.menudepense;
 
 
-import com.example.menudepense.database.Database;
-import com.example.menudepense.models.Caisse;
-import com.example.menudepense.models.User;
-
-import java.io.*;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.example.menudepense.database.Database;
+import com.example.menudepense.models.Caisse;
+import com.example.menudepense.models.User;
 
 @WebServlet(name = "CaisseMainServletServlet", value = "/caisseMain-servlet")
 public class CaisseMainServlet extends HttpServlet {
@@ -45,7 +45,7 @@ public class CaisseMainServlet extends HttpServlet {
             }
             request.setAttribute("caisse", mvmList);
             getServletContext().getRequestDispatcher("/caisseMain.jsp").forward(request, response);
-
+   
         }catch (Exception e){
             System.out.println(e);
             throw new RuntimeException(e);
