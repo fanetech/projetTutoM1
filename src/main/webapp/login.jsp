@@ -25,7 +25,7 @@
         </form>
       </div>
       <div class="form signup">
-        <header>S'inscrire a la plateforme</header>
+        <header>S'inscrire</header>
         <form action="../addUser" method="post">
           <input type="text" name="nom" placeholder="Nom" required />
           <input type="email" name="email" placeholder="Adresse Email" required />
