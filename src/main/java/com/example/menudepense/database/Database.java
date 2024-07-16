@@ -17,7 +17,7 @@ public class Database {
             );
             return connexion;
         }catch (SQLException | ClassNotFoundException e){
-            System.out.println("connection error. =>"+e);
+            System.out.println("connection error.  =>"+e);
             e.printStackTrace();
         }
 
