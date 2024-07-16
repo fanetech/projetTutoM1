@@ -16,7 +16,7 @@
     	<pre>${dbmsOutput}</pre>
     	
     	<div class="form login">
-        <header>Se connecter a la plateformes</header>
+        <header>Se connecter</header>
         <form action="/login" method="post">
           <input type="text" name="username" placeholder="Username" required />
           <input type="password" name="password" placeholder="Mot de passe" required />
